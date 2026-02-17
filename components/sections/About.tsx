@@ -29,7 +29,7 @@ export default function About() {
             transition={{ delay: 0.2, duration: 0.8 }}
           >
             <p className="text-lg md:text-xl text-gray-300 leading-relaxed mb-6">
-              I'm a <span className="text-neon-purple font-semibold">Full Stack Developer</span> experienced in building 
+              I&apos;m a <span className="text-neon-purple font-semibold">Full Stack Developer</span> experienced in building 
               scalable, production-ready applications using Next.js, React, Node.js, and MongoDB. Currently working as a{' '}
               <span className="text-neon-cyan font-semibold">Software Engineer at HCL Technologies</span>, I specialize in 
               AI integrations, n8n automation, secure authentication, and DevOps deployment.

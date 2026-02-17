@@ -43,7 +43,7 @@ export default function Contact() {
               className="space-y-8"
             >
               <div>
-                <h3 className="text-2xl font-bold mb-6 text-white">Let's Connect</h3>
+                <h3 className="text-2xl font-bold mb-6 text-white">Let&apos;s Connect</h3>
                 <p className="text-gray-400 text-lg mb-8">
                   Based in India 🇮🇳. Open to discussing new projects, creative ideas, or opportunities to collaborate.
                 </p>
