@@ -2,14 +2,16 @@
 
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
-import { HiAcademicCap, HiShieldCheck, HiCode, HiLightningBolt, HiBadgeCheck } from 'react-icons/hi'
+import { HiAcademicCap, HiShieldCheck, HiLightningBolt, HiBadgeCheck } from 'react-icons/hi'
+import { SiJavascript, SiHtml5, SiGoogle } from 'react-icons/si'
+import { MdSecurity } from 'react-icons/md'
 
 const achievements = [
-  { title: 'Introduction to JavaScript', type: 'Certification', icon: HiCode,        accent: '#6366f1' },
-  { title: 'HTML Certification',          type: 'Certification', icon: HiAcademicCap, accent: '#f59e0b' },
-  { title: 'Intro to Cyber Security',     type: 'Certification', icon: HiShieldCheck, accent: '#8b5cf6' },
+  { title: 'JavaScript',  type: 'Certification', icon: SiJavascript,    accent: '#F7DF1E' },
+  { title: 'HTML',                       type: 'Certification', icon: SiHtml5,         accent: '#E34F26' },
+  { title: 'Intro to Cyber Security',    type: 'Certification', icon: MdSecurity,      accent: '#8b5cf6' },
   { title: 'Smart India Hackathon',       type: 'Participant',   icon: HiLightningBolt,accent: '#10b981' },
-  { title: 'Google AI Campus Fest',       type: 'Participant',   icon: HiBadgeCheck,  accent: '#06b6d4' },
+  { title: 'Google AI Campus Fest',       type: 'Participant',   icon: SiGoogle,      accent: '#06b6d4' },
 ]
 
 export default function Achievements() {
