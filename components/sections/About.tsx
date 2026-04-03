@@ -1,103 +1,87 @@
 'use client'
 
-import { motion } from 'framer-motion'
-import { useInView } from 'framer-motion'
+import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
+
+const cards = [
+  { emoji: '🎓', title: 'Education',    main: 'B.E. Computer Engineering', sub: 'Marwadi University · 2021–2025' },
+  { emoji: '💼', title: 'Current Role', main: 'Software Engineer',          sub: 'HCL Technologies · Noida' },
+  { emoji: '🚀', title: 'Experience',   main: '1+ Year',                    sub: 'Full-Stack Development' },
+  { emoji: '🌍', title: 'Availability', main: 'Remote Ready',               sub: 'Open to global opportunities' },
+]
 
 export default function About() {
   const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: '-100px' })
+  const isInView = useInView(ref, { once: true, margin: '-80px' })
 
   return (
-    <section id="about" className="min-h-screen flex items-center justify-center py-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="about" className="py-28 bg-white relative overflow-hidden">
+      {/* Subtle top border glow */}
+      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#6366f1]/40 to-transparent" />
+
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8" ref={ref}>
+
         <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 50 }}
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.6 }}
         >
-          <h2 className="text-4xl md:text-6xl font-bold mb-12 text-center gradient-text">
-            About Me
-          </h2>
-          
-          {/* Main About Text */}
+          <span className="section-tag">Who I am</span>
+          <h2 className="text-4xl md:text-5xl font-black text-gray-900 mt-4">About Me</h2>
+          <div className="divider" />
+        </motion.div>
+
+        <div className="grid md:grid-cols-2 gap-14 items-start">
+
+          {/* Bio */}
           <motion.div
-            className="glass p-8 md:p-12 rounded-3xl max-w-5xl mx-auto mb-12"
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={isInView ? { opacity: 1, scale: 1 } : {}}
-            transition={{ delay: 0.2, duration: 0.8 }}
+            initial={{ opacity: 0, x: -30 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ delay: 0.15, duration: 0.6 }}
+            className="space-y-5"
           >
-            <p className="text-lg md:text-xl text-gray-300 leading-relaxed mb-6">
-              I&apos;m a <span className="text-neon-purple font-semibold">Full Stack Developer</span> experienced in building 
-              scalable, production-ready applications using Next.js, React, Node.js, and MongoDB. Currently working as a{' '}
-              <span className="text-neon-cyan font-semibold">Software Engineer at HCL Technologies</span>, I specialize in 
+            <p className="text-lg text-gray-600 leading-relaxed">
+              I&apos;m a <span className="text-[#6366f1] font-semibold">Full Stack Developer</span> who loves building
+              scalable, production-ready applications. Currently working as a{' '}
+              <span className="text-[#06b6d4] font-semibold">Software Engineer at HCL Technologies</span>, I specialize in
               AI integrations, n8n automation, secure authentication, and DevOps deployment.
             </p>
-            <p className="text-lg md:text-xl text-gray-300 leading-relaxed">
-              With strong expertise in debugging, performance optimization, and modern UI/UX design, I create{' '}
-              <span className="text-neon-purple font-semibold">real-world applications</span> that solve meaningful problems. 
-              My journey includes developing full-stack platforms with JWT authentication, payment integrations, and CI/CD pipelines.
+            <p className="text-lg text-gray-600 leading-relaxed">
+              With strong expertise in debugging, performance optimization, and modern UI/UX, I create{' '}
+              <span className="text-[#6366f1] font-semibold">real-world applications</span> that solve meaningful problems —
+              from JWT-secured platforms to CI/CD pipelines and payment integrations.
             </p>
+
+            <div className="flex flex-wrap gap-2 pt-2">
+              {['Next.js','React','Node.js','MongoDB','AI/ML','DevOps','n8n','TypeScript'].map(t => (
+                <span key={t} className="px-3 py-1 text-xs font-bold rounded-full bg-[#6366f1]/8 text-[#6366f1] border border-[#6366f1]/20">
+                  {t}
+                </span>
+              ))}
+            </div>
           </motion.div>
 
-          {/* Info Cards Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
-            {/* Education */}
-            <motion.div
-              className="glass p-6 rounded-2xl text-center hover:scale-105 transition-transform"
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.3, duration: 0.6 }}
-            >
-              <div className="text-4xl mb-3">🎓</div>
-              <h3 className="text-lg font-bold text-neon-cyan mb-2">Education</h3>
-              <p className="text-white font-semibold">B.E. Computer Engineering</p>
-              <p className="text-sm text-gray-400 mt-1">Marwadi University</p>
-              <p className="text-sm text-gray-500">2021–2025</p>
-            </motion.div>
-
-            {/* Experience */}
-            <motion.div
-              className="glass p-6 rounded-2xl text-center hover:scale-105 transition-transform"
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.4, duration: 0.6 }}
-            >
-              <div className="text-4xl mb-3">💼</div>
-              <h3 className="text-lg font-bold text-neon-cyan mb-2">Experience</h3>
-              <p className="text-white font-semibold">Full-Stack Development</p>
-              <p className="text-sm text-gray-400 mt-1">Scalable web applications</p>
-              <p className="text-sm text-neon-purple font-semibold mt-2">1+ year</p>
-            </motion.div>
-
-            {/* Interests */}
-            <motion.div
-              className="glass p-6 rounded-2xl text-center hover:scale-105 transition-transform"
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.5, duration: 0.6 }}
-            >
-              <div className="text-4xl mb-3">💡</div>
-              <h3 className="text-lg font-bold text-neon-cyan mb-2">Interests</h3>
-              <p className="text-white font-semibold">Technology & Innovation</p>
-              <p className="text-sm text-gray-400 mt-1">Exploring cutting-edge solutions</p>
-            </motion.div>
-
-            {/* Global Mindset */}
-            <motion.div
-              className="glass p-6 rounded-2xl text-center hover:scale-105 transition-transform"
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.6, duration: 0.6 }}
-            >
-              <div className="text-4xl mb-3">🌍</div>
-              <h3 className="text-lg font-bold text-neon-cyan mb-2">Global Mindset</h3>
-              <p className="text-white font-semibold">Remote Ready</p>
-              <p className="text-sm text-gray-400 mt-1">Collaborating across time zones</p>
-            </motion.div>
+          {/* Cards */}
+          <div className="grid grid-cols-2 gap-4">
+            {cards.map((c, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ delay: 0.2 + i * 0.1, duration: 0.5 }}
+                whileHover={{ y: -5, boxShadow: '0 20px 48px rgba(99,102,241,0.15)' }}
+                className="relative overflow-hidden rounded-2xl p-5 border border-[#6366f1]/12 bg-gradient-to-br from-white to-[#6366f1]/4 transition-all duration-300"
+              >
+                <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-br from-[#6366f1]/10 to-[#06b6d4]/10 rounded-bl-3xl" />
+                <div className="text-3xl mb-3">{c.emoji}</div>
+                <p className="text-[10px] font-bold text-[#6366f1] uppercase tracking-widest mb-1">{c.title}</p>
+                <p className="font-bold text-gray-800 text-sm leading-snug">{c.main}</p>
+                <p className="text-xs text-gray-400 mt-1">{c.sub}</p>
+              </motion.div>
+            ))}
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   )

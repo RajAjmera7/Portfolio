@@ -6,167 +6,209 @@ import { HiArrowDown } from 'react-icons/hi'
 import { SiLinkedin, SiGithub, SiInstagram } from 'react-icons/si'
 import Image from 'next/image'
 
+const stats = [
+  { value: '2+',  label: 'Years Exp.' },
+  { value: '10+', label: 'Projects' },
+  { value: '5+',  label: 'Tech Stacks' },
+]
+
 export default function Hero() {
-  const scrollToProjects = () => {
-    document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })
-  }
-
-  const scrollToContact = () => {
-    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
-  }
-
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          {/* Left side - Text */}
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#050508] pt-16">
+
+      {/* Grid */}
+      <div className="absolute inset-0 opacity-[0.045]" style={{
+        backgroundImage: 'linear-gradient(#6366f1 1px,transparent 1px),linear-gradient(90deg,#6366f1 1px,transparent 1px)',
+        backgroundSize: '60px 60px',
+      }} />
+
+      {/* Glow orbs */}
+      <div className="absolute top-0 right-0 w-[520px] h-[520px] bg-[#6366f1] rounded-full blur-[140px] opacity-10 pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[420px] h-[420px] bg-[#06b6d4] rounded-full blur-[120px] opacity-10 pointer-events-none" />
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <div className="grid md:grid-cols-2 gap-16 items-center">
+
+          {/* ── Left ── */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
+            initial={{ opacity: 0, x: -40 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           >
             <motion.div
-              className="text-xl md:text-2xl text-gray-400 mb-4"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.2, duration: 0.8 }}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 }}
+              className="section-tag-dark mb-6"
             >
-              👋 Hello, I&apos;m
+              👋 Available for work
             </motion.div>
 
             <motion.h1
-              className="text-5xl md:text-7xl font-bold mb-6"
-              initial={{ opacity: 0, scale: 0.5 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5 }}
+              className="text-5xl md:text-6xl lg:text-[4.5rem] font-black leading-[1.05] tracking-tight mb-5"
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.7 }}
             >
-              <span className="gradient-text">
-                Raj Ajmera
-              </span>
+              <span className="text-white">Hi, I&apos;m</span>
+              <br />
+              <span className="gradient-text">Raj Ajmera</span>
             </motion.h1>
 
-            <div className="text-2xl md:text-4xl font-bold mb-6 h-16 text-neon-cyan">
+            <motion.div
+              className="text-xl md:text-2xl font-semibold mb-6 h-9"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.35 }}
+              style={{ color: '#06b6d4' }}
+            >
               <TypeAnimation
-                sequence={[
-                  'Full Stack Developer',
-                  2000,
-                  'AI & Automation Enthusiast',
-                  2000,
-                  'Software Engineer',
-                  2000,
-                ]}
+                sequence={['Full Stack Developer', 2000, 'AI & Automation Enthusiast', 2000, 'Software Engineer @ HCL', 2000]}
                 wrapper="span"
-                speed={50}
+                speed={55}
                 repeat={Infinity}
               />
-            </div>
-
-            <motion.p
-              className="text-lg md:text-xl text-gray-300 mb-8 leading-relaxed"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.5, duration: 0.8 }}
-            >
-              Experienced in building <span className="text-neon-purple font-semibold">scalable, production-ready applications</span> using Next.js, React, Node.js, and MongoDB. 
-              Skilled in <span className="text-neon-cyan font-semibold">AI integrations, n8n automation, secure authentication, and DevOps deployment</span>. 
-              Currently engineering solutions at <span className="text-neon-purple font-semibold">HCL Technologies</span> 🚀
-            </motion.p>
-
-            <motion.div
-              className="flex flex-col sm:flex-row gap-6 items-center"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.8, duration: 0.8 }}
-            >
-            <motion.button
-              onClick={scrollToProjects}
-              className="px-8 py-4 bg-gradient-to-r from-neon-purple to-neon-cyan rounded-full font-semibold text-white shadow-lg hover:shadow-2xl transition-all"
-              whileHover={{ scale: 1.05, boxShadow: '0 0 30px rgba(147, 51, 234, 0.6)' }}
-              whileTap={{ scale: 0.95 }}
-            >
-              View Projects
-            </motion.button>
-            <motion.button
-              onClick={scrollToContact}
-              className="px-8 py-4 glass rounded-full font-semibold text-white hover:bg-white/10 transition-all"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Contact Me
-            </motion.button>
             </motion.div>
 
-            {/* Social Links */}
-            <motion.div
-              className="flex gap-4 mt-8"
+            <motion.p
+              className="text-base md:text-lg text-gray-400 mb-8 leading-relaxed max-w-lg"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 1, duration: 0.8 }}
+              transition={{ delay: 0.45 }}
             >
-              <motion.a
-                href="https://www.linkedin.com/in/raj-ajmera-007fa"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-12 h-12 glass rounded-full flex items-center justify-center hover:bg-white/10 transition-all"
-                whileHover={{ scale: 1.1, y: -5 }}
-                whileTap={{ scale: 0.95 }}
+              Building <span className="text-[#6366f1] font-semibold">scalable, production-ready apps</span> with Next.js, Node.js & MongoDB.
+              Passionate about <span className="text-[#06b6d4] font-semibold">AI integrations & DevOps</span>.
+            </motion.p>
+
+            {/* Buttons */}
+            <motion.div
+              className="flex flex-wrap gap-3 mb-10"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.55 }}
+            >
+              <motion.button
+                onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
+                className="btn-primary"
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.97 }}
               >
-                <SiLinkedin className="text-2xl text-neon-cyan" />
-              </motion.a>
-              <motion.a
-                href="https://github.com/RajAjmera7"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-12 h-12 glass rounded-full flex items-center justify-center hover:bg-white/10 transition-all"
-                whileHover={{ scale: 1.1, y: -5 }}
-                whileTap={{ scale: 0.95 }}
+                View Projects
+              </motion.button>
+              <motion.button
+                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                className="px-7 py-3 rounded-full font-semibold text-gray-300 text-sm border border-[#6366f1]/30 hover:border-[#6366f1] hover:text-white transition-all"
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.97 }}
               >
-                <SiGithub className="text-2xl text-white" />
-              </motion.a>
-              <motion.a
-                href="https://www.instagram.com/_raj_ajmera"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-12 h-12 glass rounded-full flex items-center justify-center hover:bg-white/10 transition-all"
-                whileHover={{ scale: 1.1, y: -5 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <SiInstagram className="text-2xl text-neon-purple" />
-              </motion.a>
+                Contact Me
+              </motion.button>
+            </motion.div>
+
+            {/* Socials */}
+            <motion.div
+              className="flex items-center gap-3 mb-10"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.65 }}
+            >
+              {[
+                { href: 'https://www.linkedin.com/in/raj-ajmera-007fa', Icon: SiLinkedin, color: '#0A66C2' },
+                { href: 'https://github.com/RajAjmera7',                 Icon: SiGithub,   color: '#ffffff' },
+                { href: 'https://www.instagram.com/_raj_ajmera',         Icon: SiInstagram,color: '#E1306C' },
+              ].map(({ href, Icon, color }) => (
+                <motion.a
+                  key={href}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 rounded-full border border-[#6366f1]/25 flex items-center justify-center hover:border-[#6366f1] hover:bg-[#6366f1]/10 transition-all"
+                  whileHover={{ scale: 1.15, y: -3 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Icon style={{ color, fontSize: 17 }} />
+                </motion.a>
+              ))}
+            </motion.div>
+
+            {/* Stats */}
+            <motion.div
+              className="flex gap-8"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.75 }}
+            >
+              {stats.map((s, i) => (
+                <div key={i} className="border-l-2 border-[#6366f1]/40 pl-4">
+                  <p className="text-2xl font-black gradient-text">{s.value}</p>
+                  <p className="text-xs text-gray-500 font-medium mt-0.5">{s.label}</p>
+                </div>
+              ))}
             </motion.div>
           </motion.div>
 
-          {/* Right side - Image */}
+          {/* ── Right — Photo ── */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
+            initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
+            transition={{ duration: 0.8, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
             className="flex justify-center"
           >
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              transition={{ duration: 0.3 }}
-              className="relative w-80 h-80 md:w-96 md:h-96"
-            >
-              <div className="absolute inset-0 bg-gradient-to-br from-neon-purple to-neon-cyan rounded-full opacity-20 blur-2xl"></div>
-              <Image
-                src="/raj-photo.jpg"
-                alt="Raj Ajmera"
-                width={400}
-                height={400}
-                className="rounded-full object-cover border-4 border-neon-purple/30 relative z-10"
-                priority
-              />
-            </motion.div>
+            <div className="relative">
+              {/* Outer glow */}
+              <div className="absolute -inset-6 rounded-full bg-gradient-to-br from-[#6366f1] to-[#06b6d4] opacity-20 blur-2xl animate-pulse-slow" />
+
+              {/* Spinning ring */}
+              <motion.div
+                className="absolute -inset-3 rounded-full"
+                style={{
+                  background: 'conic-gradient(from 0deg, #6366f1, #06b6d4, transparent, #6366f1)',
+                  padding: 2,
+                }}
+                animate={{ rotate: 360 }}
+                transition={{ duration: 8, repeat: Infinity, ease: 'linear' }}
+              >
+                <div className="w-full h-full rounded-full bg-[#050508]" />
+              </motion.div>
+
+              <motion.div
+                whileHover={{ scale: 1.04 }}
+                transition={{ duration: 0.3 }}
+                className="relative w-72 h-72 md:w-80 md:h-80 lg:w-96 lg:h-96"
+              >
+                <Image
+                  src="/raj-photo.jpg"
+                  alt="Raj Ajmera"
+                  width={400}
+                  height={400}
+                  className="w-full h-full rounded-full object-cover border-2 border-[#6366f1]/30"
+                  priority
+                />
+              </motion.div>
+
+              {/* Badge — open to work */}
+              <motion.div
+                className="absolute -bottom-3 -right-3 bg-[#0f1228] border border-[#6366f1]/30 rounded-2xl px-4 py-2.5 flex items-center gap-2 shadow-xl"
+                animate={{ y: [0, -6, 0] }}
+                transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
+              >
+                <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+                <span className="text-xs font-semibold text-gray-300">Open to work</span>
+              </motion.div>
+
+
+            </div>
           </motion.div>
         </div>
 
+        {/* Scroll cue */}
         <motion.div
-          className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
-          animate={{ y: [0, 10, 0] }}
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5"
+          animate={{ y: [0, 8, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
         >
-          <HiArrowDown className="text-4xl text-neon-purple" />
+          <span className="text-[10px] text-gray-600 font-semibold tracking-[0.2em] uppercase">Scroll</span>
+          <HiArrowDown className="text-[#6366f1] text-lg" />
         </motion.div>
       </div>
     </section>

@@ -8,23 +8,34 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        brand: {
+          indigo: '#6366f1',
+          cyan:   '#06b6d4',
+          dark:   '#050508',
+          navy:   '#0f1228',
+          card:   '#131630',
+        },
         neon: {
           purple: '#6366f1',
-          cyan: '#06b6d4',
+          cyan:   '#06b6d4',
         },
+      },
+      backgroundImage: {
+        'brand-gradient': 'linear-gradient(135deg, #6366f1 0%, #06b6d4 100%)',
       },
       animation: {
-        'glow': 'glow 2s ease-in-out infinite alternate',
-        'float': 'float 3s ease-in-out infinite',
+        'float':    'float 4s ease-in-out infinite',
+        'pulse-slow': 'pulse 3s ease-in-out infinite',
+        'shimmer':  'shimmer 2.5s linear infinite',
       },
       keyframes: {
-        glow: {
-          '0%': { textShadow: '0 0 10px #6366f1, 0 0 20px #6366f1, 0 0 30px #6366f1' },
-          '100%': { textShadow: '0 0 20px #6366f1, 0 0 30px #6366f1, 0 0 40px #6366f1' },
-        },
         float: {
-          '0%, 100%': { transform: 'translateY(0px)' },
-          '50%': { transform: 'translateY(-20px)' },
+          '0%,100%': { transform: 'translateY(0px)' },
+          '50%':     { transform: 'translateY(-14px)' },
+        },
+        shimmer: {
+          '0%':   { backgroundPosition: '-200% center' },
+          '100%': { backgroundPosition:  '200% center' },
         },
       },
     },
